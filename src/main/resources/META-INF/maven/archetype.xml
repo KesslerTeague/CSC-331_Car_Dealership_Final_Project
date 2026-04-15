@@ -1,0 +1,9 @@
+<archetype>
+  <id>CSC-331_Car_Dealership_Group_Project</id>
+  <sources>
+    <source>src/main/java/App.java</source>
+  </sources>
+  <testSources>
+    <source>src/test/java/AppTest.java</source>
+  </testSources>
+</archetype>
