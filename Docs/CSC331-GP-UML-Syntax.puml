@@ -1,0 +1,93 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+enum VehicleStatus {
+  AVAILABLE
+  SOLD
+  PENDING
+}
+
+abstract class Vehicle {
+  - vehicleId: String
+  - make: String
+  - model: String
+  - year: int
+  - price: double
+  + Vehicle(vehicleId: String, make: String, model: String, year: int, price: double)
+  + {abstract} getDetails(): String
+  + updateStatus(): void
+  + getStatus(): VehicleStatus
+}
+
+class Car {
+  - numDoors: int
+  - bodyStyle: String
+  + Car(vehicleId: String, make: String, model: String, year: int, price: double, numDoors: int, bodyStyle: String)
+  + getDetails(): String
+  + updateStatus(): void
+  + getStatus(): VehicleStatus
+}
+
+class Truck {
+  - cabStyle: String
+  - cargoCapacity: double
+  + Truck(vehicleId: String, make: String, model: String, year: int, price: double, cabStyle: String, cargoCapacity: double)
+  + getDetails(): String
+  + updateStatus(): void
+  + getStatus(): VehicleStatus
+}
+
+class Customer {
+  - customerId: String
+  - name: String
+  - email: String
+  + Customer(customerId: String, name: String, email: String)
+  + getCustomerId(): String
+  + getName(): String
+  + getEmail(): String
+  + register(): void
+  + getPurchaseHistory(): List
+  + updateContact(newEmail: String): void
+}
+
+class CustomerDirectory {
+  + addCustomer(c: Customer): void
+  + removeCustomer(c: Customer): void
+  + searchByName(name: String): Customer
+  + getAllCustomers(): List
+}
+
+class Sale {
+  - saleId: String
+  - saleDate: Date
+  - totalPrice: double
+  + Sale(saleId: String, saleDate: Date)
+  + recordSale(): void
+  + getSaleDetails(): String
+  + calculateTotal(): double
+  + getSalesByDate(): List
+}
+
+class Inventory {
+  + addVehicle(v: Vehicle): void
+  + removeVehicle(v: Vehicle): void
+  + searchByMake(make: String): List
+  + filterByStatus(status: VehicleStatus): List
+  + updateVehicle(v: Vehicle): void
+  + viewAll(): List
+}
+
+' Inheritance Relationships (Vertical)
+Vehicle <|-- Car
+Vehicle <|-- Truck
+
+' Associations and Aggregations (Mixed layout to create a grid)
+CustomerDirectory "1" o-- "0..*" Customer : manages >
+Customer "1" -- "0..*" Sale : places >
+Sale "0..*" -right- "1" Vehicle : involves >
+Inventory "1" o-- "0..*" Vehicle : manages >
+
+' Hidden link to keep the enum near the Vehicle class
+VehicleStatus -[hidden]left- Vehicle
+
+@enduml

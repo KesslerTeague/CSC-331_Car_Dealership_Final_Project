@@ -1,4 +1,4 @@
 package edu.uncw.csc331.cardealership.model;
 
-public class Truck extends Vehicle {
+public class SaleTest {
 }
