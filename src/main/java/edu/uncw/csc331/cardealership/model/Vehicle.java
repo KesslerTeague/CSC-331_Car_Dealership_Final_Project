@@ -7,14 +7,16 @@ public abstract class Vehicle {
     private String make;
     private String model;
     private int year;
+    private double price;
     private VehicleStatus status;
 
     // Constructor (default status = AVAILABLE)
-    public Vehicle(String vehicleId, String make, String model, int year) {
+    public Vehicle(String vehicleId, String make, String model, int year, double price) {
         this.vehicleId = vehicleId;
         this.make = make;
         this.model = model;
         this.year = year;
+        this.price = price;
         this.status = VehicleStatus.AVAILABLE;
     }
 
@@ -23,6 +25,7 @@ public abstract class Vehicle {
     public String getMake() { return make; }
     public String getModel() { return model; }
     public int getYear() { return year; }
+    public double getPrice() { return price; }
     public VehicleStatus getStatus() { return status; }
 
     // Update status
@@ -36,6 +39,6 @@ public abstract class Vehicle {
     // For displaying vehicle info
     @Override
     public String toString() {
-        return vehicleId + " - " + make + " " + model + " (" + year + ") [" + status + "]";
+        return vehicleId + " - " + make + " " + model + " (" + year + ") $" + price + " [" + status + "]";
     }
 }
