@@ -1,24 +1,25 @@
 package edu.uncw.csc331.cardealership.model;
 
+// Car class extends Vehicle (inherits common fields)
 public class Car extends Vehicle {
+
     private int numDoors;
     private String bodyStyle;
 
-    public void Car(String vehicleId, String make, String model, int year, double price, int numDoors, String bodyStyle) {
-        super(vehicleId, make, model, year, price,);
+    // Constructor
+    public Car(String vehicleId, String make, String model, int year, int numDoors, String bodyStyle) {
+        super(vehicleId, make, model, year); // call parent constructor
         this.numDoors = numDoors;
         this.bodyStyle = bodyStyle;
     }
 
+    // Returns details specific to a car
     public String getDetails() {
-        return "Vehicle ID: " + this.vehicleId + "Make: " + this.make + "Model: " + this.model + "Year: " + this.year + "Price: " + this.price + "Number of Doors: " + this.numDoors + "Body Style: " + this.bodyStyle;
-    }
-
-    public void updateStatus() {
-        return;
-    }
-
-    public VehicleStatus getStatus() {
-        return VehicleStatus.getStatus();
+        return "Vehicle ID: " + getVehicleId() +
+                " Make: " + getMake() +
+                " Model: " + getModel() +
+                " Year: " + getYear() +
+                " Doors: " + numDoors +
+                " Body Style: " + bodyStyle;
     }
 }

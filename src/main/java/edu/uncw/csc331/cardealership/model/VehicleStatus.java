@@ -1,16 +1,18 @@
 package edu.uncw.csc331.cardealership.model;
 
+// Enum for vehicle status (fixed values)
 public enum VehicleStatus {
-    AVAILABLE("Available"),
-    SOLD("Sold"),
-    PENDING("Pending");
+    AVAILABLE,
+    SOLD,
+    PENDING;
 
-    private final String status;
-
-    VehicleStatus(String status) {
-        this.status = status;
-    }
-    public String getStatus() {
-        return status;
+    // Makes the text look nicer in the UI
+    @Override
+    public String toString() {
+        return switch (this) {
+            case AVAILABLE -> "Available";
+            case SOLD -> "Sold";
+            case PENDING -> "Pending";
+        };
     }
 }

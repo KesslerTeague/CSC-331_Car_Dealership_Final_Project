@@ -1,24 +1,25 @@
 package edu.uncw.csc331.cardealership.model;
 
+// Truck class extends Vehicle
 public class Truck extends Vehicle {
-  private String cabStyle;
-  private double cargoCapacity;
-  
-  public void Truck(String vehicleId, String make, String model, int year, double price, String cabStyle, double cargoCapacity) {
-      super(vehicleId, make, model, year, price);
-      this.cabStyle = cabStyle;
-      this.cargoCapacity = cargoCapacity;
+
+    private String cabStyle;
+    private double cargoCapacity;
+
+    // Constructor
+    public Truck(String vehicleId, String make, String model, int year, String cabStyle, double cargoCapacity) {
+        super(vehicleId, make, model, year); // call parent constructor
+        this.cabStyle = cabStyle;
+        this.cargoCapacity = cargoCapacity;
     }
 
-  public String getDetails() {
-      return "Vehicle ID: " + this.vehicleId + "Make: " + this.make + "Model: " + this.model + "Year: " + this.year + "Price: " + this.price + "Cab Style: " + this.cabStyle + "Cargo Capacity: " + this.cargoCapacity;
-    }
-
-  public void updateStatus() {
-      return;
-    }
-
-  public VehicleStatus getStatus() {
-      return VehicleStatus.getStatus();
+    // Returns details specific to a truck
+    public String getDetails() {
+        return "Vehicle ID: " + getVehicleId() +
+                " Make: " + getMake() +
+                " Model: " + getModel() +
+                " Year: " + getYear() +
+                " Cab Style: " + cabStyle +
+                " Cargo Capacity: " + cargoCapacity;
     }
 }
