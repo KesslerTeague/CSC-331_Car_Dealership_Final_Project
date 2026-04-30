@@ -10,8 +10,8 @@ public class CarDealershipApp {
         Inventory inventory = new Inventory();
 
         // Create vehicles
-        Car car1 = new Car("V001", "Toyota", "Camry", 2020, 4, "Sedan");
-        Truck truck1 = new Truck("V002", "Ford", "F-150", 2022, "Crew Cab", 2000);
+        Car car1 = new Car("V001", "Toyota", "Camry", 2020, 25000.00, 4, "Sedan");
+        Truck truck1 = new Truck("V002", "Ford", "F-150", 2022, 45000.00, "Crew Cab", 2000);
 
         // Add to inventory
         inventory.addVehicle(car1);
