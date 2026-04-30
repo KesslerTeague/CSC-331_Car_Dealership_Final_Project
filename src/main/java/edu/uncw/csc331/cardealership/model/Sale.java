@@ -7,24 +7,36 @@ public class Sale {
     private LocalDate saleDate;
     private double totalPrice;
     private Vehicle vehicle;
-    private Customer customer;
+    private String customerName;
 
-    public Sale(String saleId, LocalDate saleDate, Vehicle vehicle, Customer customer) {
+    public Sale(String saleId, LocalDate saleDate, Vehicle vehicle, String customerName) {
         this.saleId = saleId;
         this.saleDate = saleDate;
         this.vehicle = vehicle;
-        this.customer = customer;
+        this.customerName = customerName;
+        this.totalPrice = vehicle.getPrice();
     }
 
     public String getSaleId() { return saleId; }
     public LocalDate getSaleDate() { return saleDate; }
     public double getTotalPrice() { return totalPrice; }
     public Vehicle getVehicle() { return vehicle; }
-    public Customer getCustomer() { return customer; }
+    public String getCustomerName() { return customerName; }
 
-    public void recordSale() {}
+    // Marks the vehicle as SOLD
+    public void recordSale() {
+        vehicle.updateStatus(VehicleStatus.SOLD);
+    }
 
-    public String getSaleDetails() { return ""; }
+    public String getSaleDetails() {
+        return "Sale ID: " + saleId +
+                " | Date: " + saleDate +
+                " | Customer: " + customerName +
+                " | Vehicle: " + vehicle.toString() +
+                " | Total: $" + totalPrice;
+    }
 
-    public double calculateTotal() { return 0; }
+    public double calculateTotal() {
+        return totalPrice;
+    }
 }
