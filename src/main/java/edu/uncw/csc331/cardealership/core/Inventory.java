@@ -98,12 +98,12 @@ public class Inventory {
                     if (v instanceof Car car) {
                         writer.printf("CAR,%s,%s,%s,%d,%.2f,%s,%d,%s%n",
                                 car.getVehicleId(), car.getMake(), car.getModel(),
-                                car.getYear(), car.getPrice(), car.getStatus(),
+                                car.getYear(), car.getPrice(), car.getStatus().name(),
                                 car.getNumDoors(), car.getBodyStyle());
                     } else if (v instanceof Truck truck) {
                         writer.printf("TRUCK,%s,%s,%s,%d,%.2f,%s,%s,%.2f%n",
                                 truck.getVehicleId(), truck.getMake(), truck.getModel(),
-                                truck.getYear(), truck.getPrice(), truck.getStatus(),
+                                truck.getYear(), truck.getPrice(), truck.getStatus().name(),
                                 truck.getCabStyle(), truck.getCargoCapacity());
                     }
                 }
