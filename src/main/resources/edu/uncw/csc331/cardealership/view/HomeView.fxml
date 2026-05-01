@@ -16,11 +16,10 @@
         <VBox prefWidth="220.0" spacing="10" style="-fx-background-color: #eef3f7; -fx-padding: 15;">
             <children>
                 <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Functions" />
-                <Button maxWidth="1.7976931348623157E308" onAction="#showRegisterDog" prefHeight="25.0" prefWidth="160.0" text="Add Car" />
-                <Button maxWidth="1.7976931348623157E308" onAction="#showAddTraining" prefHeight="25.0" prefWidth="160.0" text="Add Training Record" />
-                <Button maxWidth="1.7976931348623157E308" onAction="#showSearchDogs" prefHeight="25.0" prefWidth="160.0" text="Search Inventory" />
+                <Button maxWidth="1.7976931348623157E308" onAction="#showRegisterDog" prefHeight="25.0" prefWidth="160.0" text="Add Vehicle" />
                 <Button maxWidth="1.7976931348623157E308" onAction="#showBehavior" prefHeight="25.0" prefWidth="160.0" text="Sell Vehicle" />
-                <Button maxWidth="1.7976931348623157E308" onAction="#showHistory" prefHeight="25.0" prefWidth="160.0" text="Review History" />
+                <Button maxWidth="1.7976931348623157E308" onAction="#showSearchDogs" prefHeight="25.0" prefWidth="160.0" text="Search Inventory" />
+                <Button maxWidth="1.7976931348623157E308" onAction="#showHistory" prefHeight="25.0" prefWidth="160.0" text="Review Sale History" />
                 <Button maxWidth="1.7976931348623157E308" onAction="#showPersistence" prefHeight="25.0" prefWidth="160.0" text="Save / Load" />
             </children>
             <padding>

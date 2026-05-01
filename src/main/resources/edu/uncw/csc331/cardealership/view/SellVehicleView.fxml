@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="14" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dogtrainingapp.dog_training_app.controller.AddTrainingController">
+    <children>
+        <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Sell Vehicle" />
+        <GridPane hgap="10" vgap="10">
+            <children>
+                <Label text="Sale ID:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="dogIdField" promptText="Enter Sale ID" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Label text="VIN:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextField fx:id="skillField" promptText="Enter Vehicle ID (VIN)" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label text="Date:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField fx:id="dateField" promptText="YYYY-MM-DD" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label text="Customer Name:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <TextField promptText="Enter Customer Name" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            </children>
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+        <GridPane hgap="10">
+            <children>
+                <Button onAction="#addRecord" text="Complete Sale" GridPane.columnIndex="0" />
+                <Button onAction="#clearFields" text="Clear" GridPane.columnIndex="1" />
+            </children>
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+        <Label fx:id="messageLabel" style="-fx-text-fill: #8b0000;" wrapText="true" />
+    </children>
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+</VBox>
