@@ -41,10 +41,10 @@
             <rowConstraints>
                 <RowConstraints />
                 <RowConstraints />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" />
                 <RowConstraints />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
             </rowConstraints>
         </GridPane>
         <Button maxWidth="150" onAction="#showAll" text="Show All Vehicles" />
