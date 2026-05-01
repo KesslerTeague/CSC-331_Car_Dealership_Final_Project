@@ -1,0 +1,98 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Inventory {
+  - vehicles : List<Vehicle>
+  - sales : List<Sale>
+  - {static} DATA_DIR : Path
+  - {static} INVENTORY_FILE : Path
+  - {static} SALES_FILE : Path
+  + addVehicle(v: Vehicle) : void
+  + removeVehicle(v: Vehicle) : void
+  + updateVehicle(v: Vehicle) : void
+  + viewAll() : List<Vehicle>
+  + searchByMake(make: String) : List<Vehicle>
+  + searchByYear(year: int) : List<Vehicle>
+  + filterByMaxPrice(maxPrice: double) : List<Vehicle>
+  + filterByStatus(status: VehicleStatus) : List<Vehicle>
+  + filterByType(type: Class<?>) : List<Vehicle>
+  + recordSale(sale: Sale) : void
+  + getSales() : List<Sale>
+  + saveToFile() : void
+  + findById(id: String) : Vehicle
+  + saveSalesToFile() : void
+  + loadSalesFromFile() : void
+  + loadFromFile() : void
+}
+
+class Sale {
+  - saleId : String
+  - saleDate : LocalDate
+  - totalPrice : double
+  - vehicle : Vehicle
+  - customerName : String
+  + Sale(saleId: String, saleDate: LocalDate, vehicle: Vehicle, customerName: String)
+  + getSaleId() : String
+  + getSaleDate() : LocalDate
+  + getTotalPrice() : double
+  + getVehicle() : Vehicle
+  + getCustomerName() : String
+  + recordSale() : void
+  + getSaleDetails() : String
+  + calculateTotal() : double
+}
+
+abstract class Vehicle <<abstract>> {
+  - vehicleId : String
+  - make : String
+  - model : String
+  - year : int
+  - price : double
+  - status : VehicleStatus
+  + Vehicle(vehicleId: String, make: String, model: String, year: int, price: double)
+  + getVehicleId() : String
+  + getMake() : String
+  + getModel() : String
+  + getYear() : int
+  + getPrice() : double
+  + getStatus() : VehicleStatus
+  + updateStatus(newStatus: VehicleStatus) : void
+  + {abstract} getDetails() : String
+  + toString() : String
+}
+
+enum VehicleStatus <<enumeration>> {
+  AVAILABLE
+  SOLD
+  PENDING
+  + toString() : String
+}
+
+class Car {
+  - numDoors : int
+  - bodyStyle : String
+  + Car(vehicleId: String, make: String, model: String, year: int, price: double, numDoors: int, bodyStyle: String)
+  + getNumDoors() : int
+  + getBodyStyle() : String
+  + getDetails() : String
+}
+
+class Truck {
+  - cabStyle : String
+  - cargoCapacity : double
+  + Truck(vehicleId: String, make: String, model: String, year: int, price: double, cabStyle: String, cargoCapacity: double)
+  + getCabStyle() : String
+  + getCargoCapacity() : double
+  + getDetails() : String
+}
+
+' Relationships simplified
+Inventory o-- Sale : > tracks
+Inventory o-- Vehicle : > manages
+Sale -right-> Vehicle : > involves
+Vehicle -[hidden]right- VehicleStatus
+
+Car -up-|> Vehicle
+Truck -up-|> Vehicle
+
+@enduml
