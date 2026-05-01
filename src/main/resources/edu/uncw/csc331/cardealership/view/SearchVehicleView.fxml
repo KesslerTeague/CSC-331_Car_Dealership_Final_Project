@@ -4,47 +4,50 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox spacing="14" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dogtrainingapp.dog_training_app.controller.SearchDogController">
+<VBox spacing="14" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.uncw.csc331.cardealership.controller.SearchVehicleController">
     <children>
         <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Search Inventory" />
         <GridPane hgap="10" vgap="10">
             <children>
                 <Label text="Search by VIN:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <TextField fx:id="idSearchField" promptText="VIN" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                <Button onAction="#searchById" text="Find by VIN" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                <TextField fx:id="vinSearchField" promptText="VIN" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Button onAction="#searchByVin" text="Find by VIN" GridPane.columnIndex="2" GridPane.rowIndex="0" />
 
                 <Label text="Search by Make:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                <TextField fx:id="nameSearchField" promptText="Vehicle Make" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Button onAction="#searchByName" text="Find by Make" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <TextField fx:id="makeSearchField" promptText="Vehicle Make" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Button onAction="#searchByMake" text="Find by Make" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+
+                <Label text="Search by Year:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField fx:id="yearSearchField" promptText="Vehicle Year" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Button onAction="#searchByYear" text="Find by Year" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+
+                <Label text="Search by Max Price:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <TextField fx:id="maxPriceField" promptText="Max Price" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Button onAction="#searchByMaxPrice" text="Find by Max Price" GridPane.columnIndex="2" GridPane.rowIndex="3" />
 
                 <Label text="Search by Status:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                <ComboBox fx:id="typeComboBox" prefWidth="220" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <Button onAction="#searchByType" text="Find by Status" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Label text="Search by Year:" GridPane.rowIndex="2" />
-            <Label text="Search by Model:" GridPane.rowIndex="5" />
-            <Label text="Search by Max Price:" GridPane.rowIndex="3" />
-            <TextField promptText="Max Price" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ComboBox prefWidth="220.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" text="Find by Year" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" text="Find by Model" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" text="Find by Max Price" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <TextField promptText="Vehicle Year" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <ComboBox fx:id="statusComboBox" prefWidth="220" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <Button onAction="#searchByStatus" text="Find by Status" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+
+                <Label text="Search by Type:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                <ComboBox fx:id="vehicleTypeComboBox" prefWidth="220" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <Button onAction="#searchByType" text="Find by Type" GridPane.columnIndex="2" GridPane.rowIndex="5" />
             </children>
-         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" />
-            <RowConstraints />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" />
-         </rowConstraints>
+            <columnConstraints>
+                <ColumnConstraints />
+                <ColumnConstraints />
+                <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                <RowConstraints />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" />
+            </rowConstraints>
         </GridPane>
-        <Button maxWidth="150" onAction="#showAllDogs" text="Show All Vehicles" />
+        <Button maxWidth="150" onAction="#showAll" text="Show All Vehicles" />
         <ListView fx:id="resultListView" prefHeight="360" />
     </children>
     <padding>

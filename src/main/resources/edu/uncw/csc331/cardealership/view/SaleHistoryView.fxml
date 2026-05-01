@@ -4,22 +4,22 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox spacing="14" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dogtrainingapp.dog_training_app.controller.HistoryController">
+<VBox spacing="14" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.uncw.csc331.cardealership.controller.SaleHistoryController">
     <children>
         <GridPane hgap="10" vgap="10">
-         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-         </rowConstraints>
-         <children>
+            <columnConstraints>
+                <ColumnConstraints />
+                <ColumnConstraints />
+                <ColumnConstraints />
+                <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints />
+            </rowConstraints>
+            <children>
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Review Sale History" />
                 <Button onAction="#loadHistory" text="Load History" GridPane.columnIndex="3" />
-              <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Review Sale History" />
-         </children>
+            </children>
         </GridPane>
         <ListView fx:id="historyListView" prefHeight="380" />
     </children>
