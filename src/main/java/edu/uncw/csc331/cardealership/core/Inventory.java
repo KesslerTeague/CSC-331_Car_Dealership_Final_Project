@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,6 +18,7 @@ public class Inventory {
 
     private static final Path DATA_DIR = Path.of("data");
     private static final Path INVENTORY_FILE = Path.of("data", "inventory.txt");
+    private static final Path SALES_FILE = Path.of("data", "sales.txt");
 
     public void addVehicle(Vehicle v) {
         vehicles.add(v);
@@ -108,6 +110,66 @@ public class Inventory {
             }
         } catch (IOException e) {
             System.out.println("Error saving inventory: " + e.getMessage());
+        }
+    }
+
+    // Looks up a vehicle in memory by its ID.
+    // Used when loading sales — the file stores only the vehicleId, and this
+    // reconnects it to the full Vehicle object already loaded from inventory.txt.
+    public Vehicle findById(String id) {
+        return vehicles.stream()
+                .filter(v -> v.getVehicleId().equals(id))
+                .findFirst()
+                .orElse(null);
+    }
+
+    // Save all sales to file.
+    // Format per line: saleId,saleDate,customerName,vehicleId
+    // We store vehicleId (not the full Vehicle object) because the vehicle's
+    // data already lives in inventory.txt — no need to duplicate it.
+    public void saveSalesToFile() {
+        try {
+            if (!Files.exists(DATA_DIR)) {
+                Files.createDirectories(DATA_DIR);
+            }
+            try (PrintWriter writer = new PrintWriter(SALES_FILE.toFile())) {
+                for (Sale sale : sales) {
+                    writer.printf("%s,%s,%s,%s%n",
+                            sale.getSaleId(),
+                            sale.getSaleDate(),           // LocalDate.toString() → "yyyy-MM-dd"
+                            sale.getCustomerName(),
+                            sale.getVehicle().getVehicleId()); // extract ID from the Vehicle object
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error saving sales: " + e.getMessage());
+        }
+    }
+
+    // Load sales from file; replaces current in-memory sales list.
+    // Must be called AFTER loadFromFile() so vehicles are already in memory.
+    // Format expected: saleId,saleDate,customerName,vehicleId
+    public void loadSalesFromFile() {
+        sales.clear();
+
+        if (!Files.exists(SALES_FILE)) {
+            return;
+        }
+
+        try (Scanner scanner = new Scanner(SALES_FILE.toFile())) {
+            while (scanner.hasNextLine()) {
+                String[] f = scanner.nextLine().split(",");
+
+                // Look up the Vehicle object using the stored ID.
+                // This works because loadFromFile() has already populated the vehicles list.
+                Vehicle vehicle = findById(f[3]);
+
+                if (vehicle != null) {
+                    sales.add(new Sale(f[0], LocalDate.parse(f[1]), vehicle, f[2]));
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error loading sales: " + e.getMessage());
         }
     }
 
