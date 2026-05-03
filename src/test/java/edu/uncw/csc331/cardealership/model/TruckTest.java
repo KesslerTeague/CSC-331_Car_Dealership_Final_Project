@@ -1,29 +1,47 @@
 package edu.uncw.csc331.cardealership.model;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 public class TruckTest {
 
-private Truck truck;
+    private Truck truck;
 
     @BeforeEach
     void setUp() {
-        // Runs before EVERY test: a fresh dog object
         truck = new Truck("1", "Toyota", "Tacoma", 2021, 45000.00, "Regular Cab", 2000.00);
+    }
 
-        @Test
-        @getDetails("Test car details are set correctly")
-        void testgetDetails() {
-            assertEquals("Vehicle ID: 1 Make: Toyota Model: Tacoma Year: 2021, Price: 45000.00, Cab Style: Regular Cab Cargo Capacity: 2000.00");
-        }
+    @Test
+    void testGetDetails() {
+        String details = truck.getDetails();
+        assertTrue(details.contains("Toyota"));
+        assertTrue(details.contains("Tacoma"));
+        assertTrue(details.contains("2021"));
+        assertTrue(details.contains("Regular Cab"));
+        assertTrue(details.contains("2000.0"));
+    }
 
-        @Test
-        @updateStatus("Test status is set updated correctly")
-        void testupdateStatus() {
-            assertEquals();
-        }
+    @Test
+    void testDefaultStatusIsAvailable() {
+        assertEquals(VehicleStatus.AVAILABLE, truck.getStatus());
+    }
 
-        @Test
-        @VehicleStatus("Test vehicle status is set correctly")
-        void testVehicleStatus() {
-            assertEquals(truck.getStatus());
-        }
+    @Test
+    void testUpdateStatus() {
+        truck.updateStatus(VehicleStatus.SOLD);
+        assertEquals(VehicleStatus.SOLD, truck.getStatus());
+    }
+
+    @Test
+    void testGetters() {
+        assertEquals("1", truck.getVehicleId());
+        assertEquals("Toyota", truck.getMake());
+        assertEquals("Tacoma", truck.getModel());
+        assertEquals(2021, truck.getYear());
+        assertEquals(45000.00, truck.getPrice());
+        assertEquals("Regular Cab", truck.getCabStyle());
+        assertEquals(2000.00, truck.getCargoCapacity());
+    }
 }
